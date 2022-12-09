@@ -3,7 +3,9 @@ const onInit = () => {
     document.getElementById('md').style.width = '50rem'
     document.getElementById('md').style.height = '25rem'
     document.getElementById('md').addEventListener('input', (e) => {
-        document.getElementById('result').innerHTML = DOMPurify.sanitize(marked.parse(e.target.value));
+        document.getElementById('result').innerHTML = //DOMPurify.sanitize(
+            marked.parse(e.target.value)
+        //);
     });
 }
 
