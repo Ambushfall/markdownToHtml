@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script src="marked.min.js"></script>
+    <script src="purify.min.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown to HTML</title>
-    <script defer src="marked.min.js"></script>
-    <script defer src="purify.min.js"></script>
-    <script src="index-purified.js" defer></script>
-    
-    <link rel="stylesheet" type="text/css" href="github-markdown.css" />
-<style>
-.markdown-body {
-  width: 80%;
-  margin: 0 auto;
-}
+    <meta charset="utf-8" />
+    <title>MD > HTML</title>
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0-dev.20230519/min/vs/editor/editor.main.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="editor">
+        <div class="editor__code">
+          <div
+            id="editorCode"
+            style="min-height: 770px; border: 1px solid black"
+          ></div>
+        </div>
 
-</style>
-</head>
+        <div class="editor__preview">
+          <iframe id="editorPreview" frameborder="0"></iframe>
+        </div>
+      </div>
 
-<body>
-
-    <div id="container" style="display:flex; flex-direction:row;">
-        <form>
-            <label for='md'>Markdown here:</label>
-            <fieldset>
-
-                <textarea id='md' type='text'></textarea>
-                <p class="markdown-body" id="result">
-                <h1>Unicorns</h1>
-	<p>All the things</p>
-                </p>
-
-            </fieldset>
-        </form>
-
+      <div class="buttons">
+        <button class="button" id="editorCopyClipboard">Copy HTML</button>
+        <button class="button" id="downloadFile">Create file</button>
+      </div>
     </div>
-    <div>
-        <button onclick="download(document.getElementById('result').innerHTML, 'template.html', 'text/plain')">Create
-            file</button>
-    </div>
-</body>
-
+  </body>
+  <script>
+    var require = {
+      paths: {
+        vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0-dev.20230519/min/vs",
+      },
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0-dev.20230519/min/vs/loader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0-dev.20230519/min/vs/editor/editor.main.nls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0-dev.20230519/min/vs/editor/editor.main.js"></script>
+  <script src="editor.js"></script>
 </html>
