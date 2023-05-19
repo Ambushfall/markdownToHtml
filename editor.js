@@ -29,7 +29,7 @@ function createEditor(editorContainer) {
         minimap: { enabled: false },
         automaticLayout: true,
         contextmenu: false,
-        fontSize: 21,
+        fontSize: 16,
         scrollbar: {
             useShadows: false,
             vertical: "visible",
