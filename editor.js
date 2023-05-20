@@ -22,8 +22,9 @@ if (typeof CSS_LINKS !== 'undefined') {
 createEditor(editorCode);
 
 function createEditor(editorContainer) {
+    console.log(CHEATSHEET)
     let editor = monaco.editor.create(editorContainer, {
-        value: "",
+        value: CHEATSHEET,
         language: "markdown",
         theme: "vs-dark",
         minimap: { enabled: false },
