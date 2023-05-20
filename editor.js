@@ -1,5 +1,6 @@
 const CSS_LINKS = [`https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css`];
 
+const CHEATSHEET = fetch("https://ambushfall-next13-app.vercel.app/MD_CHEATSHEET.MD").then(res => res.text())
 
 
 // Elements
@@ -21,10 +22,10 @@ if (typeof CSS_LINKS !== 'undefined') {
 
 createEditor(editorCode);
 
-function createEditor(editorContainer) {
-    console.log(CHEATSHEET)
+async function createEditor(editorContainer) {
+    // console.log(CHEATSHEET)
     let editor = monaco.editor.create(editorContainer, {
-        value: CHEATSHEET,
+        value: typeof CHEATSHEET !== 'undefined' ? await CHEATSHEET : '',
         language: "markdown",
         theme: "vs-dark",
         minimap: { enabled: false },
@@ -58,7 +59,9 @@ function createEditor(editorContainer) {
         }
     }
 
-    editorPreview.body.innerHTML = "";
+    editorPreview.body.innerHTML = DOMPurify.sanitize(
+        marked.parse(editor.getValue())
+    );
 
     editor.onDidChangeModelContent(() => {
         editorPreview.body.innerHTML = DOMPurify.sanitize(
