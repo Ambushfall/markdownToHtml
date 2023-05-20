@@ -1,7 +1,18 @@
-const CSS_LINKS = [`https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css`];
+// const CSS_LINKS = [`https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css`];
 
 const CHEATSHEET = fetch("https://ambushfall-next13-app.vercel.app/MD_CHEATSHEET.MD").then(res => res.text())
 
+const MD_CFG = {
+    async: true,
+    // pedantic: false,
+    gfm: true,
+    mangle: false,
+    headerIds: false
+}
+
+marked.use(MD_CFG);
+
+const MD_PARSER = (rawMD) => DOMPurify.sanitize(marked.parse(rawMD));
 
 // Elements
 const editorCode = document.getElementById("editorCode");
@@ -59,14 +70,10 @@ async function createEditor(editorContainer) {
         }
     }
 
-    editorPreview.body.innerHTML = DOMPurify.sanitize(
-        marked.parse(editor.getValue())
-    );
+    editorPreview.body.innerHTML = MD_PARSER(editor.getValue())
 
     editor.onDidChangeModelContent(() => {
-        editorPreview.body.innerHTML = DOMPurify.sanitize(
-            marked.parse(editor.getValue())
-        );
+        editorPreview.body.innerHTML = MD_PARSER(editor.getValue())
     });
 
     editorCopyButton.onclick = () => {
