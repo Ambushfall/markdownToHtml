@@ -1,9 +1,9 @@
-// const CSS_LINKS = [`https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css`];
+const CSS_LINKS = [`https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css`];
 
 const CHEATSHEET = fetch("https://ambushfall-next13-app.vercel.app/MD_CHEATSHEET.MD").then(res => res.text())
 
 const MD_CFG = {
-    async: true,
+    // async: true,
     // pedantic: false,
     gfm: true,
     mangle: false,
