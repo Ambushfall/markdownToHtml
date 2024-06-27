@@ -1,6 +1,6 @@
 const CSS_LINKS = [`https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css`];
 
-const CHEATSHEET = fetch("https://ambushfall-next13-app.vercel.app/MD_CHEATSHEET.MD").then(res => res.text())
+const CHEATSHEET = fetch("https://ambushfall.com/MD_CHEATSHEET.MD").then(res => res.text())
 
 const MD_CFG = {
     // async: true,
